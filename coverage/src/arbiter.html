@@ -35,7 +35,7 @@
     <span class="quiet">Rate</span>
   </li>
   <li>
-    <span class="strong">44</span>
+    <span class="strong">38</span>
     <span class="quiet">Hits</span>
   </li>
   <li>
@@ -137,18 +137,6 @@
         <li>83</li>
         <li>84</li>
         <li>85</li>
-        <li>86</li>
-        <li>87</li>
-        <li>88</li>
-        <li>89</li>
-        <li>90</li>
-        <li>91</li>
-        <li>92</li>
-        <li>93</li>
-        <li>94</li>
-        <li>95</li>
-        <li>96</li>
-        <li>97</li>
     </ul>
 
     <ul class="line-coverages undecorated">
@@ -174,7 +162,7 @@
 </li>
         <li class="line-empty">
 </li>
-        <li class="line-hit">20x</li>
+        <li class="line-hit">19x</li>
         <li class="line-empty">
 </li>
         <li class="line-empty">
@@ -185,11 +173,11 @@
 </li>
         <li class="line-empty">
 </li>
-        <li class="line-hit">18x</li>
-        <li class="line-hit">18x</li>
+        <li class="line-hit">17x</li>
+        <li class="line-hit">17x</li>
         <li class="line-hit">2x</li>
-        <li class="line-hit">16x</li>
-        <li class="line-hit">9x</li>
+        <li class="line-hit">15x</li>
+        <li class="line-hit">8x</li>
         <li class="line-hit">7x</li>
         <li class="line-hit">7x</li>
         <li class="line-empty">
@@ -207,19 +195,19 @@
         <li class="line-empty">
 </li>
         <li class="line-hit">1x</li>
-        <li class="line-hit">9x</li>
+        <li class="line-hit">8x</li>
         <li class="line-empty">
 </li>
-        <li class="line-hit">27x</li>
-        <li class="line-hit">18x</li>
-        <li class="line-hit">18x</li>
-        <li class="line-hit">18x</li>
-        <li class="line-hit">18x</li>
+        <li class="line-hit">25x</li>
+        <li class="line-hit">17x</li>
+        <li class="line-hit">17x</li>
+        <li class="line-hit">17x</li>
+        <li class="line-hit">17x</li>
         <li class="line-empty">
 </li>
         <li class="line-empty">
 </li>
-        <li class="line-hit">18x</li>
+        <li class="line-hit">16x</li>
         <li class="line-hit">19x</li>
         <li class="line-hit">17x</li>
         <li class="line-hit">19x</li>
@@ -227,19 +215,13 @@
 </li>
         <li class="line-empty">
 </li>
-        <li class="line-hit">27x</li>
-        <li class="line-hit">18x</li>
+        <li class="line-hit">25x</li>
+        <li class="line-hit">17x</li>
         <li class="line-empty">
 </li>
         <li class="line-empty">
 </li>
-        <li class="line-hit">9x</li>
-        <li class="line-empty">
-</li>
-        <li class="line-empty">
-</li>
-        <li class="line-empty">
-</li>
+        <li class="line-hit">8x</li>
         <li class="line-empty">
 </li>
         <li class="line-empty">
@@ -253,20 +235,8 @@
         <li class="line-empty">
 </li>
         <li class="line-hit">1x</li>
-        <li class="line-hit">7x</li>
+        <li class="line-hit">6x</li>
         <li class="line-hit">2x</li>
-        <li class="line-empty">
-</li>
-        <li class="line-empty">
-</li>
-        <li class="line-hit">5x</li>
-        <li class="line-hit">1x</li>
-        <li class="line-hit">2x</li>
-        <li class="line-hit">2x</li>
-        <li class="line-hit">2x</li>
-        <li class="line-hit">1x</li>
-        <li class="line-empty">
-</li>
         <li class="line-empty">
 </li>
         <li class="line-empty">
@@ -285,8 +255,8 @@
         <li class="line-empty">
 </li>
         <li class="line-hit">1x</li>
-        <li class="line-hit">3x</li>
-        <li class="line-hit">3x</li>
+        <li class="line-hit">1x</li>
+        <li class="line-hit">1x</li>
         <li class="line-hit">1x</li>
         <li class="line-empty">
 </li>
@@ -370,29 +340,17 @@
         <li class="line-empty">end</li>
         <li class="line-empty">
 </li>
-        <li class="line-empty">--- Picks a value from a content-type -&gt; value map respecting an accept header.</li>
-        <li class="line-empty">-- When handlers are given as a sequence of tuples or strings, it checks them in</li>
-        <li class="line-empty">-- order and prefers lower indices when more than one element matches.  This is</li>
-        <li class="line-empty">-- to allow prioritizing computationally cheaper content representations when</li>
-        <li class="line-empty">-- clients can accept both.  @tparam string accept A full HTTP Accept header</li>
-        <li class="line-empty">-- @tparam table available A table of content types</li>
-        <li class="line-empty">-- @return type value</li>
+        <li class="line-empty">--- Picks the client&#39;s preferred content type from a list.</li>
+        <li class="line-empty">-- When given a list of strings as arguments or in a sequence, the best match will be returned.</li>
+        <li class="line-empty">-- When given a table, the keys will be treated as content types</li>
+        <li class="line-empty">-- and the selected type will be returned along with its corresponding value.</li>
         <li class="line-hit">function arbiter:pick(available, ...)</li>
         <li class="line-hit">	if type(available) == &quot;string&quot; then</li>
         <li class="line-hit">		return self:pick({available, ...})</li>
         <li class="line-empty">	end</li>
         <li class="line-empty">
 </li>
-        <li class="line-hit">	if type(available[1]) == &quot;table&quot; then</li>
-        <li class="line-hit">		for _, entry in self:ipairs() do</li>
-        <li class="line-hit">			for _, pair in ipairs(available) do</li>
-        <li class="line-hit">				local name, value = pair[1], pair[2]</li>
-        <li class="line-hit">				if name:find(entry.pattern) then</li>
-        <li class="line-hit">					return name, value</li>
-        <li class="line-empty">				end</li>
-        <li class="line-empty">			end</li>
-        <li class="line-empty">		end</li>
-        <li class="line-hit">	elseif type(available[1]) == &quot;string&quot; then</li>
+        <li class="line-hit">	if type(available[1]) == &quot;string&quot; then</li>
         <li class="line-hit">		for _, entry in self:ipairs() do</li>
         <li class="line-hit">			for _, name in ipairs(available) do</li>
         <li class="line-hit">				if name:find(entry.pattern) then</li>
@@ -422,7 +380,7 @@
       </main>
 
       <footer class="quiet">
-        Code coverage generated by <a href="https://keplerproject.github.io/luacov/" target="_blank">LuaCov</a> at 2022-12-18 13:58:55
+        Code coverage generated by <a href="https://keplerproject.github.io/luacov/" target="_blank">LuaCov</a> at 2022-12-18 14:23:12
       </footer>
     </div>
   </body>
