@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Arbiter</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>Arbiter</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Local_Functions">Local Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>arbiter</strong></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="topics/readme.md.html">readme</a></li>
+  <li><a href="topics/license.md.html">license</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>arbiter</code></h1>
+<p>Handles content negotiation with the client.</p>
+<p>
+</p>
+    <h3>Info:</h3>
+    <ul>
+        <li><strong>License</strong>: Unlicense</li>
+        <li><strong>Author</strong>: DarkWiiPlayer</li>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new (accept)</a></td>
+	<td class="summary">Parses an &ldquo;accept&rdquo; header and returns its entries.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pick">pick (available)</a></td>
+	<td class="summary">Picks a value from a content-type &ndash;> value map respecting an accept header.</td>
+	</tr>
+</table>
+<h2><a href="#Local_Functions">Local Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#patescape">patescape (pattern)</a></td>
+	<td class="summary">Escapes all the special pattern characters in a string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pattern">pattern (accept)</a></td>
+	<td class="summary">Takes a content type string and turns the string into patterns to match said type(s)</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new (accept)</strong>
+    </dt>
+    <dd>
+    Parses an &ldquo;accept&rdquo; header and returns its entries.
+ Values are returned as: <code>{q = &lt;Q-Value&gt;, s = &lt;Specificity&gt;, type = &lt;content type&gt;}</code>
+ where specificity can be 1 for <code><em>/</em></code>, 2 for <code>&lt;type&gt;/*</code> or 3 for <code>&lt;type&gt;/&lt;subtype&gt;</code>
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">accept</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The full HTTP Accept header
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pick"></a>
+    <strong>pick (available)</strong>
+    </dt>
+    <dd>
+    Picks a value from a content-type &ndash;> value map respecting an accept header.
+ When handlers are given as a sequence of tuples or strings, it checks them in
+ order and prefers lower indices when more than one element matches.  This is
+ to allow prioritizing computationally cheaper content representations when
+ clients can accept both.  @tparam string accept A full HTTP Accept header
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">available</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         A table of content types
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        type value
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header "><a name="Local_Functions"></a>Local Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "patescape"></a>
+    <strong>patescape (pattern)</strong>
+    </dt>
+    <dd>
+    Escapes all the special pattern characters in a string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pattern</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A string to escape
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pattern"></a>
+    <strong>pattern (accept)</strong>
+    </dt>
+    <dd>
+    Takes a content type string and turns the string into patterns to match said type(s)
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">accept</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         A single content-type
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2022-12-18 13:58:55 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
