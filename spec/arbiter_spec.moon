@@ -46,3 +46,27 @@ describe "Content arbiter", ->
 		it "fails when it cannot negotiate a type", ->
 			assert.errors ->
 				assert picker\pick 'application/js', 'image/png'
+	
+	describe "acceptable method", ->
+		it "accepts handles exact mime type matches", ->
+			assert.true arbiter.acceptable "text/plain", "text/plain"
+		it "accepts asterisk subtype matches", ->
+			assert.true arbiter.acceptable "text/*", "text/plain"
+		it "accepts */* as a match for everything", ->
+			assert.true arbiter.acceptable "*/*", "text/plain"
+		it "rejects non-matches", ->
+			assert.false arbiter.acceptable "application/json", "text/html"
+		it "rejects subtype non-matches", ->
+			assert.false arbiter.acceptable "text/plain", "text/html"
+		accept = "text/html, application/xhtml+xml, application/xml;q=0.9, image/webp, text/*;q=0.1"
+		it "can deal with complicated accept headers correctly", ->
+			assert.true arbiter.acceptable accept, "text/plain"
+			assert.false arbiter.acceptable accept, "foo/bar"
+			assert.true arbiter.acceptable accept, "image/webp"
+			assert.false arbiter.acceptable accept, "image/png"
+		it "can be called as a method", ->
+			object = arbiter.new(accept)
+			assert.true arbiter.acceptable object, "text/plain"
+			assert.false arbiter.acceptable object, "foo/bar"
+			assert.true arbiter.acceptable object, "image/webp"
+			assert.false arbiter.acceptable object, "image/png"

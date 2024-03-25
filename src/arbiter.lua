@@ -28,6 +28,7 @@ end
 --- @field q number The corresponding Q-value
 --- @field s number The specificity of the mime type
 --- @field type string The full mime-type as a string
+--- @field pattern string A pattern that matches this mime-type
 
 --- Parses an "accept" header and returns its entries.
 -- Values are returned as: `{q = <Q-Value>, s = <Specificity>, type = <content type>}`
@@ -89,6 +90,33 @@ function arbiter:pick(available, ...)
 		end
 	end
 	return nil, "Content type negotiation failed for '"..self.accept.."'"
+end
+
+--- Returns whether a given content type is acceptable according to a given accept header.
+--- This is a more performant alternative when only one content type is available.
+--- @param accept string|arbiter Unparsed 'accept' header to compare to
+--- @param offered string A single content type that could be returned
+function arbiter.acceptable(accept, offered)
+	local generic = offered:match("^[^/]+/").."*"
+
+	if type(accept) == "string" then
+		for ctype in accept:gmatch("[%a*]+/[%a*]+") do
+			if ctype == "*/*" then
+				return true
+			elseif ctype == generic then
+				return true
+			elseif ctype == offered then
+				return true
+			end
+		end
+	else
+		for _, accepted in ipairs(accept--[[@as accepted[] ]]) do
+			if offered:match(accepted.pattern) then
+				return true
+			end
+		end
+	end
+	return false
 end
 
 return arbiter
